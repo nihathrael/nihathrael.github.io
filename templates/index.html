@@ -2,11 +2,15 @@
 
 {% block content %}
 <h1>Welcome</h1>
-<p>This is my homepage, where I <a href="{{ get_url(path="@/blog/_index.md") }}">blog</a> about anything interesting to me. You can <a href="{{ get_url(path="@/about/index.md") }}">learn more about me</a></a> as well, if you are interested.</p>
-<h1>Socials</h1>
+<p>This is my homepage, where I <a href="{{ get_url(path="@/blog/_index.md") }}">blog</a> mainly blog about technical things related to computer science. If you're interested, you can <a href="{{ get_url(path="@/about/index.md") }}">learn more about me</a> as well.</p>
+
+<h2>Recent Blog Posts</h2>
+{% set blog_section = get_section(path="blog/_index.md") %}
 <ul>
-    <li><a href="https://www.xing.com/profile/Thomas_Kinnen">Xing</a></li>
-    <li><a href="https://www.linkedin.com/in/thomas-kinnen-b4bb6b159/">Linked-In</a></li>
-    <li><a href="https://github.com/nihathrael">Github</a></li>
+    {% for page in blog_section.pages %}
+    <li>{{page.date}} - <a href="{{ page.permalink | safe }}">{{ page.title }}</a></li>
+    {% endfor %}
 </ul>
+
+{% include "socials.html" %}
 {% endblock content %}

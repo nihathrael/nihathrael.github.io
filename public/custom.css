@@ -1,0 +1,11 @@
+/* :root {
+    // Add custom variables here
+}*/
+  
+header > nav { 
+    box-shadow: 0 1px 0 var(--muted-color);
+}
+
+main.container, main article {
+    padding-top: 0px;
+}

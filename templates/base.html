@@ -1,24 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 
 <head>
     <meta charset="utf-8">
-    <title>Wecome to my blog - kinnen.de</title>
+    <title>Thomas' Blog - kinnen.de</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/chota.css">
-    <style>
-        body.dark {
-        --bg-color: #000;
-        --bg-secondary-color: #131316;
-        --font-color: #f5f5f5;
-        --color-grey: #ccc;
-        --color-darkGrey: #777;
-        }
-
-        .nav {
-            background-color: var(--bg-secondary-color);
-        }
-    </style>
+    <link rel="stylesheet" href="/pico.min.css">
+    <link rel="stylesheet" href="/custom.css">
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
@@ -26,42 +14,39 @@
 </head>
 
 <body>
-    <section class="section">
-        <div class="container">
-            <div class="nav">
-                <div class="nav-left">
-                    <div class="tabs">
-                        <a href="/blog/" {% if current_path is starting_with("/blog") %}class="active" {% endif %}>Blog</a>
-                        <a href="/about" {% if current_path is starting_with("/about") %}class="active" {% endif %}>About</a>
-                        
-                    </div>
-                    <a href="javascript:void(0)" id="theme-switch" onclick="switchMode(this)">☀️</a>
-                </div>
-                <div class="nav-right">
-                    <a class="brand" href="/">Thomas' Blog</a>
-                </div>
-            </div>
-        {% block content %} {% endblock %}
-        </div>
-    </section>
-    <br/>
-    <footer class="text-center">
-        This site is made with the <a href="https://www.getzola.org">Zola Static Site Generator</a> & <a href="https://jenil.github.io/chota/">Chota CSS Framework</a>.
+    <header>
+        <nav class="container">
+            <ul>
+                <li><strong>Thomas' Blog</a></strong>
+                </li>
+            </ul>
+            <ul>
+                <li><a href="/" {% if current_path == "/" %}class="active" {% endif %}>Home</a></li>
+                <li><a href="/blog/" {% if current_path is starting_with("/blog") %}class="active" {% endif %}>Blog</a></li>
+                <li><a href="/about" {% if current_path is starting_with("/about") %}class="active" {% endif %}>About</a></li>
+                <li><a href="javascript:void(0)" id="theme-switch" onclick="switchMode(this)">☀️</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main class="container">
+    {% block content %} {% endblock %}
+    </main>
+    <footer class="container">
+        This site is made with the <a href="https://www.getzola.org">Zola Static Site Generator</a> & <a href="https://picocss.com">Pico CSS Framework</a>.
     </footer>
     <script>
         if (
           window.matchMedia &&
           window.matchMedia("(prefers-color-scheme: dark)").matches
         ) {
-          document.body.classList.add("dark");
-          document.querySelector('#theme-switch').innerHTML = "🌙"
+            document.documentElement.dataset.theme = "dark";
+            document.querySelector('#theme-switch').innerHTML = "🌙"
         }
     
         function switchMode(el) {
-          const bodyClass = document.body.classList;
-          bodyClass.contains("dark")
-            ? ((el.innerHTML = "☀️"), bodyClass.remove("dark"))
-            : ((el.innerHTML = "🌙"), bodyClass.add("dark"));
+          document.documentElement.dataset.theme === "dark"
+            ? ((el.innerHTML = "☀️"), document.documentElement.dataset.theme = "light")
+            : ((el.innerHTML = "🌙"), document.documentElement.dataset.theme = "dark");
         }
       </script>
 </body>

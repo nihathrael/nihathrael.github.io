@@ -1,24 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 
 <head>
     <meta charset="utf-8">
-    <title>Wecome to my blog - kinnen.de</title>
+    <title>Thomas' Blog - kinnen.de</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/chota.css">
-    <style>
-        body.dark {
-        --bg-color: #000;
-        --bg-secondary-color: #131316;
-        --font-color: #f5f5f5;
-        --color-grey: #ccc;
-        --color-darkGrey: #777;
-        }
-
-        .nav {
-            background-color: var(--bg-secondary-color);
-        }
-    </style>
+    <link rel="stylesheet" href="/pico.min.css">
+    <link rel="stylesheet" href="/custom.css">
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
@@ -26,48 +14,73 @@
 </head>
 
 <body>
-    <section class="section">
-        <div class="container">
-            <div class="nav">
-                <div class="nav-left">
-                    <div class="tabs">
-                        <a href="/blog/" >Blog</a>
-                        <a href="/about" class="active" >About</a>
-                        
-                    </div>
-                    <a href="javascript:void(0)" id="theme-switch" onclick="switchMode(this)">☀️</a>
-                </div>
-                <div class="nav-right">
-                    <a class="brand" href="/">Thomas' Blog</a>
-                </div>
-            </div>
-        
+    <header>
+        <nav class="container">
+            <ul>
+                <li><strong>Thomas' Blog</a></strong>
+                </li>
+            </ul>
+            <ul>
+                <li><a href="/" >Home</a></li>
+                <li><a href="/blog/" >Blog</a></li>
+                <li><a href="/about" class="active" >About</a></li>
+                <li><a href="javascript:void(0)" id="theme-switch" onclick="switchMode(this)">☀️</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main class="container">
+    
 <h1 id="about-me">About Me</h1>
-<p>Hi! My name is <em>Thomas Kinnen</em>, from Germany 🇩🇪. I currently live in Ratingen, a city in North Rhine-Westphalia, close to Düsseldorf.</p>
+<p>Hi! My name is <em>Thomas Kinnen</em>, from Germany 🇩🇪. I live in Ratingen, a city in North Rhine-Westphalia, close to Düsseldorf.</p>
+<p>I'm interested in lots of things:</p>
+<ul>
+<li>Computer Science
+<ul>
+<li>Software Quality</li>
+<li>Performance Tuning</li>
+</ul>
+</li>
+<li>Leadership</li>
+<li>Parkour</li>
+<li>Motorcycles &amp; Cars</li>
+</ul>
 <h2 id="work">Work</h2>
 <p>I work as the <em>Head of Engineering</em> for our product <a href="https://www.teamscale.com">Teamscale</a> at <a href="https://www.cqse.eu">CQSE GmbH</a>. I'm interested in all things concerning software quality and modern leadership practices. If you have any literature recommendations, regarding these topics, please let me know!</p>
+<h2 id="favorite-quote">Favorite Quote</h2>
+<p>Words to live by:</p>
+<blockquote>
+    "Do or do not, there is no try."
+    <footer>
+      <cite>- Yoda, Star Wars - The Empire Strikes Back</cite>
+    </footer>
+</blockquote>
+<section id="socials">
+<h2>Socials</h2>
+<p>Feel free to reach out any time!</p>
+<ul>
+    <li><a href="https://www.xing.com/profile/Thomas_Kinnen">Xing</a></li>
+    <li><a href="https://www.linkedin.com/in/thomas-kinnen-b4bb6b159/">Linked-In</a></li>
+    <li><a href="https://github.com/nihathrael">Github</a></li>
+</ul>
+</section>
 
-
-        </div>
-    </section>
-    <br/>
-    <footer class="text-center">
-        This site is made with the <a href="https://www.getzola.org">Zola Static Site Generator</a> & <a href="https://jenil.github.io/chota/">Chota CSS Framework</a>.
+    </main>
+    <footer class="container">
+        This site is made with the <a href="https://www.getzola.org">Zola Static Site Generator</a> & <a href="https://picocss.com">Pico CSS Framework</a>.
     </footer>
     <script>
         if (
           window.matchMedia &&
           window.matchMedia("(prefers-color-scheme: dark)").matches
         ) {
-          document.body.classList.add("dark");
-          document.querySelector('#theme-switch').innerHTML = "🌙"
+            document.documentElement.dataset.theme = "dark";
+            document.querySelector('#theme-switch').innerHTML = "🌙"
         }
     
         function switchMode(el) {
-          const bodyClass = document.body.classList;
-          bodyClass.contains("dark")
-            ? ((el.innerHTML = "☀️"), bodyClass.remove("dark"))
-            : ((el.innerHTML = "🌙"), bodyClass.add("dark"));
+          document.documentElement.dataset.theme === "dark"
+            ? ((el.innerHTML = "☀️"), document.documentElement.dataset.theme = "light")
+            : ((el.innerHTML = "🌙"), document.documentElement.dataset.theme = "dark");
         }
       </script>
 </body>
