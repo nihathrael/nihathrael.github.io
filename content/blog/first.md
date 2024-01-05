@@ -11,4 +11,4 @@ Topics I currently envision writing about:
 * Management of IT Teams
 * Maybe: Motorcycles & Sports
 
-I hope you'll enjoy the content! If you ever have questions, get in touch on with me on my [Socials](/#socials)
+I hope you'll enjoy the content! If you ever have questions, get in touch on with me on my [Socials](/#socials).
