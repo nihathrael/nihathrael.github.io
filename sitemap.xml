@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    <url>
+        <loc>https://nihathrael.github.io/</loc>
+    </url>
+    <url>
+        <loc>https://nihathrael.github.io/about/</loc>
+    </url>
+    <url>
+        <loc>https://nihathrael.github.io/blog/</loc>
+    </url>
+    <url>
+        <loc>https://nihathrael.github.io/blog/enumset-benchmark/</loc>
+        <lastmod>2024-01-05</lastmod>
+    </url>
+    <url>
+        <loc>https://nihathrael.github.io/blog/first/</loc>
+        <lastmod>2024-01-03</lastmod>
+    </url>
+</urlset>
