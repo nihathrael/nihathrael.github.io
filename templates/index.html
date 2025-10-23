@@ -2,7 +2,7 @@
 {% block title %}Home{% endblock title %}
 {% block content %}
 <h1>Welcome</h1>
-<p>This is my homepage, where I mainly <a href="{{ get_url(path="@/blog/_index.md") }}">blog</a> about anything that interests me. You can also learn more <a href="{{ get_url(path="@/about/index.md") }}">about me</a>.</p>
+<p>This is my homepage, where I <a href="{{ get_url(path="@/blog/_index.md") }}">blog</a> about anything that interests me. You can also learn more <a href="{{ get_url(path="@/about/index.md") }}">about me</a>.</p>
 
 <h2>Recent Blog Posts</h2>
 {% set blog_section = get_section(path="blog/_index.md") %}
