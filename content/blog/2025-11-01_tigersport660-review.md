@@ -38,7 +38,7 @@ The panieers haven't gotten too much use yet, but they look great and did get th
 The quickshifter is a must have in my opinion, it's very smooth and is unbelievably fun to bang through the gears. The heated grips are also really nice, as they make riding in cooler weather a lot more comfortable – lengthening the riding season.
 
 ## Riding Experience
-Keep in mind, this is my first motorcycle, so your mileage may vary. 
+Keep in mind, this is my first motorcycle. So your mileage may vary. 
 
 ### Things I Like
 First off, the bike is super easy to ride. When I test drove it against an *Aprilia Tuono 660* and a *Suzuki GSX-8S*, that is what I noticed the most and appreciated a lot as a beginner. I also liked the more upright riding position, as it is much easier on my desk-ridden back. That said, the bike is very comfortable for up to 2-3 hours, any more and the seat will feel very hard. 
@@ -77,19 +77,8 @@ Having a Tankbag feels like a must. The *Micro WP* by SW Motech is very high qua
 ## Final Thoughts
 Overall, I really like the *Triumph Tiger Sport 660* and am very happy with my purchase. The bike is fun, easy to ride and is very versatile. It'll happily do some shopping in the city, rip through B-roads and be ok on the highway (for a while). My main gripe remains the wind protection/noise, everything else is really just nitpicking. I have had no technical problems, except for one rogue check engine light that had to be reset in the very beginning.
 
-If you are in the market for a nice cross-over in the middle-weight category, take it for a spin. Especially since the new generation now finally comes with cruise control and cornering ABS. If you are an experienced rider, you should probably look at the *Triumph Tiger Sport 800* first, as it is basically the same bike, with a bit more power which might keep you satisfied a bit longer. 
+If you are in the market for a nice cross-over in the middle-weight category, take it for a spin. Especially since the new generation now finally comes with cruise control and cornering ABS. If you are an experienced rider, you should probably look at the <a href="https://www.triumphmotorcycles.com/motorcycles/adventure/tiger-sport-800/tiger-sport-800-2025" target="_blank">Triumph Tiger Sport 800</a> first, as it is basically the same bike, with a bit more power which might keep you satisfied a bit longer. 
 
 Do you have experience with the Tiger Sport 660? I'd love to hear you thoughts!
 
 Contact me via one of my [socials](/#socials)!
-
-
-
-
-
-
-
-
-
-
-
