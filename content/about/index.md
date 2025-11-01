@@ -9,8 +9,8 @@ Hi! My name is *Thomas Kinnen*, from Germany 🇩🇪. I live in Ratingen, a cit
 I'm interested in lots of things:
 
 * Computer Science
-    * Software Quality
-    * Performance Tuning
+  * Software Quality
+  * Performance Tuning
 * Leadership
 * Parkour
 * Motorcycles & Cars

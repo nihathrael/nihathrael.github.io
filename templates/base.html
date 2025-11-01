@@ -16,26 +16,29 @@
 </head>
 
 <body>
-    <header>
-        <nav class="container">
-            <ul>
-                <li><strong>Thomas' Blog</a></strong>
-                </li>
-            </ul>
-            <ul>
-                <li><a href="/" {% if current_path == "/" %}class="active" {% endif %}>Home</a></li>
-                <li><a href="/blog/" {% if current_path is starting_with("/blog") %}class="active" {% endif %}>Blog</a></li>
-                <li><a href="/about" {% if current_path is starting_with("/about") %}class="active" {% endif %}>About</a></li>
-                <li><a href="javascript:void(0)" id="theme-switch" onclick="switchMode(this)">☀️</a></li>
-            </ul>
-        </nav>
-    </header>
+   
     <main class="container">
-    {% block content %} {% endblock %}
-    </main>
-    <footer class="container">
+        <header>
+            <nav>
+                <ul>
+                    <li>
+                        <strong>Thomas' Homepage</a></strong>
+                    </li>
+                </ul>
+                <ul>
+                    <li><a href="/" {% if current_path == "/" %}aria-current="page"{% endif %}>Home</a></li>
+                    <li><a href="/blog/" {% if current_path is starting_with("/blog") %}aria-current="page"{% endif %}>Blog</a></li>
+                    <li><a href="/about" {% if current_path is starting_with("/about") %}aria-current="page"{% endif %}>About</a></li>
+                    <li><a href="javascript:void(0)" id="theme-switch" onclick="switchMode(this)">☀️</a></li>
+                </ul>
+            </nav>
+        </header>
+        {% block content %} {% endblock %}
+        <footer class="container">
         This site is made with the <a href="https://www.getzola.org">Zola Static Site Generator</a> & <a href="https://picocss.com">Pico CSS Framework</a>.
-    </footer>
+        </footer>
+    </main>
+
     <script>
         if (
           window.matchMedia &&
