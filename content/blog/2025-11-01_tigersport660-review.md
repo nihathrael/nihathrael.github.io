@@ -6,7 +6,7 @@ date = 2025-11-01
 After 2 years of ownership and roughly 7000km, it is time for a review of my motorcycle: the *Triumph Tiger Sport 660*.
 
 ## About The Bike - Specs & Upgrades
-First, let's start of with some technical specs about the bike in general, followed by a quick overview of the upgrades I bought with the bike (and my opinion on them).
+First, let's start of with some technical specs about the bike in general, followed by a quick overview of the accessories I bought with the bike (and my opinion on them).
 
 {{ resize_image(path="static/images/tiger-sport-at-dealer.jpg", width=900, height=700, op="fit") }}
 <div style="text-align: center">The bike at the dealer after it's first service.</div>
