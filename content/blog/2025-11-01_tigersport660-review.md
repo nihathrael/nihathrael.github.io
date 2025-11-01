@@ -70,7 +70,7 @@ The Puig windscreen is the result of some trial and error. I also own the much s
 
 The Evotech bar end weights are a result of the short gearing, as the engine does get a bit vibey at higher speeds (120km/h+) when doing longer stretches on the Autobahn. I was surprised how effective they are and would recommend them if you plan on taking longer highway trips often or just like vibe free bars. 
 
-The SP Connect phone mount works well. The inductive loading of the phone is just about strong enough to keep the phone at the current battery level when the sun is out, so it could be a bit stronger, but that's just nitpicking.
+The SP Connect phone mount works well. The inductive charging of the phone is just about strong enough to keep the phone at the current battery level when the sun is out. So it could be a bit stronger, but that's just nitpicking.
 
 Having a Tankbag feels like a must. The *Micro WP* by SW Motech is very high quality (comes at a price though) and just big enough to fit some water and snacks for an afternoon ride-out, no backpack needed. Highly recommended!
 
