@@ -9,7 +9,7 @@ After 2 years of ownership and roughly 7000km, it is time for a review of my mot
 First, let's start of with some technical specs about the bike in general, followed by a quick overview of the accessories I bought with the bike (and my opinion on them).
 
 {{ resize_image(path="static/images/tiger-sport-at-dealer.jpg", width=900, height=700, op="fit") }}
-<div style="text-align: center">The Tiger at the dealer after it's first service.</div>
+<div style="text-align: center">The Tiger at the dealer after its first service.</div>
 
 ### Specs
 The *Tiger Sport 660* is a three cylinder, 660cc motorcycle with 81 HP and 64 Nm of torque. It'll allegedly go 196km/h (didn't go quite as fast yet) and Triumph says it uses around 4.7L of fuel per 100 km (seems about right in my experience). The *Tiger Sport 660* is based on the same platform as the *Triumph Trident 660* (and *Daytona 660*). Triumph sells it as a cross-over, a somewhat entry level sports tourer and city bike. We'll get to whether the Tiger exceeds at that claim. 
