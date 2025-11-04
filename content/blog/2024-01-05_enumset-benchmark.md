@@ -1,6 +1,7 @@
 +++
 title = "Benchmarking the cost of Javas' EnumSet - A Second Look"
 date = 2024-01-05
+authors = ["Thomas Kinnen"]
 +++
 
 A few months ago, I read Chris Wellons' ["The cost of Java's EnumSet"](https://nullprogram.com/blog/2021/04/23/). I really enjoyed the read, but as a long time Java developer, I was left with few questions and thoughts:

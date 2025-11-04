@@ -1,6 +1,7 @@
 +++
 title = "Welcome to my blog!"
 date = 2024-01-03
+authors = ["Thomas Kinnen"]
 +++
 
 Welcome to my blog! On this blog I'll be covering a variety of topics that interest me, mostly technical computer science related topics.
