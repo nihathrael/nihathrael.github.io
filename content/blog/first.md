@@ -6,6 +6,8 @@ authors = ["Thomas Kinnen"]
 
 Welcome to my blog! On this blog I'll be covering a variety of topics that interest me, mostly technical computer science related topics.
 
+<!-- more -->
+
 Topics I currently envision writing about:
 * The Java programming langugae
 * Performance Tuning (especially Java code)

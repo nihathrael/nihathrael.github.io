@@ -5,7 +5,7 @@ author = ["Thomas Kinnen"]
 +++
 
 After 2 years of ownership and roughly 7000km, it is time for a review of my motorcycle: the *Triumph Tiger Sport 660*.
-
+<!-- more -->
 ## About The Bike - Specs & Upgrades
 First, let's start of with some technical specs about the bike in general, followed by a quick overview of the accessories I bought with the bike (and my opinion on them).
 

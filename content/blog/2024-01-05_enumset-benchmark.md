@@ -9,7 +9,7 @@ A few months ago, I read Chris Wellons' ["The cost of Java's EnumSet"](https://n
 1. "Writing benchmarks in Java is inherently tricky, especially for small and fast operations. We should probably use a dedicated tool like [JMH](https://github.com/openjdk/jmh) for that."
 
 Now I finally had some time on my hands to go and explore these thoughts and try to fill the void with some cold hard data. This post will first explain a few important aspects of profiling java and then discuss the results of our specific benchmark, by answering our research questions:
-
+<!-- more -->
 # Benchmark Goals & Questions
 
 I want to see if I can reproduce Chris' results and answer a few additional questions at the same time:
