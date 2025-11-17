@@ -4,8 +4,15 @@
 <head>
     <meta charset="utf-8">
     <title>{% block title %}{{ config.title }}{% endblock title %} - Thomas' Blog</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="og:title" content="{{ config.title }}" />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="{{ current_url }}">
+    {% if page.extra.socialimg is defined %}
+    <meta property="og:image" content="{{ page.extra.socialimg }}" />
+    {% else %}
     <meta property="og:image" content="/favicon-32x32.png" />
+    {% endif %}
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/pico.min.css">
     <link rel="stylesheet" href="/custom.css">
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">

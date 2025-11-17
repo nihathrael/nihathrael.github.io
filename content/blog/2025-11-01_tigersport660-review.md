@@ -2,6 +2,9 @@
 title = "Triumph Tiger Sport 660 - 2 Year Ownership Review "
 date = 2025-11-01
 author = ["Thomas Kinnen"]
+
+[extra]
+socialimg = "static/images/tiger-sport-at-dealer.jpg"
 +++
 
 After 2 years of ownership and roughly 7000km, it is time for a review of my motorcycle: the *Triumph Tiger Sport 660*.
