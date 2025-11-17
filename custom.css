@@ -1,0 +1,19 @@
+/* :root {
+    // Add custom variables here
+}*/
+  
+header > nav { 
+   box-shadow: 0 1px 0 var(--pico-muted-color);
+}
+
+main.container {
+    padding-top: 0px;
+}
+
+h1 {
+    margin-top: 1rem;
+}
+
+main > article {
+    margin-top: 1rem;
+}

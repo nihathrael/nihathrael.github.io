@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+
+<head>
+    <meta charset="utf-8">
+    <title>About Me - Thomas' Blog</title>
+    <meta property="og:title" content="" />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https:&#x2F;&#x2F;kinnen.de&#x2F;about&#x2F;">
+    
+    <meta property="og:image" content="/favicon-32x32.png" />
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/pico.min.css">
+    <link rel="stylesheet" href="/custom.css">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <link rel="me" href="https://github.com/nihathrael">
+    <link rel="me" href="https://www.reddit.com/user/nihathrael/">
+    <link rel="me" href="https://www.linkedin.com/in/thomas-kinnen/">
+    <script defer src="https://cloud.umami.is/script.js" data-website-id="ca97c930-a532-4dfe-bf87-352bd391e491"></script>
+</head>
+
+<body>
+   
+    <main class="container">
+        <header>
+            <nav>
+                <ul>
+                    <li>
+                        <strong>Thomas' Homepage</a></strong>
+                    </li>
+                </ul>
+                <ul>
+                    <li><a href="/" >Home</a></li>
+                    <li><a href="/blog/" >Blog</a></li>
+                    <li><a href="/about" aria-current="page">About</a></li>
+                    <li><a href="javascript:void(0)" id="theme-switch" onclick="switchMode(this)">☀️</a></li>
+                </ul>
+            </nav>
+        </header>
+        
+<h1 id="about-me">About Me</h1>
+<p>Hi! My name is <em>Thomas Kinnen</em>, from Germany 🇩🇪. I live in Ratingen, a city in North Rhine-Westphalia, close to Düsseldorf.</p>
+<p>I'm interested in lots of things:</p>
+<ul>
+<li>Computer Science
+<ul>
+<li>Software Quality</li>
+<li>Performance Tuning</li>
+</ul>
+</li>
+<li>Leadership</li>
+<li>Parkour</li>
+<li>Motorcycles &amp; Cars</li>
+</ul>
+<h2 id="work">Work</h2>
+<p>I work as the <em>Head of Engineering</em> for our product <a rel="noopener" target="_blank" href="https://www.teamscale.com">Teamscale</a> at <a rel="noopener" target="_blank" href="https://www.cqse.eu">CQSE GmbH</a>, with over a decade of software engineering experience. I'm interested in all things concerning software quality and modern leadership practices. If you have any literature recommendations, regarding these topics, please let me know!</p>
+<h2 id="favorite-quote">Favorite Quote</h2>
+<p>Words to live by:</p>
+<blockquote>
+    "Do or do not, there is no try."
+    <footer>
+      <cite>- Yoda, Star Wars - The Empire Strikes Back</cite>
+    </footer>
+</blockquote>
+<h2  id="socials">Socials</h2>
+<p>Feel free to reach out any time!</p>
+<ul>
+    <li><a href="https://github.com/nihathrael">Github</a></li>
+    <li><a href="https://www.linkedin.com/in/thomas-kinnen-b4bb6b159/">Linked-In</a></li>
+    <li><a href="https://www.xing.com/profile/Thomas_Kinnen">Xing</a></li>
+</ul>
+
+        <footer class="container">
+        <hr>
+        <sup>This site is made with the <a href="https://www.getzola.org">Zola Static Site Generator</a> & <a href="https://picocss.com">Pico CSS Framework</a>.</sup>
+        </footer>
+    </main>
+
+    <script>
+        if (
+          window.matchMedia &&
+          window.matchMedia("(prefers-color-scheme: dark)").matches
+        ) {
+            document.documentElement.dataset.theme = "dark";
+            document.querySelector('#theme-switch').innerHTML = "🌙"
+        }
+    
+        function switchMode(el) {
+          document.documentElement.dataset.theme === "dark"
+            ? ((el.innerHTML = "☀️"), document.documentElement.dataset.theme = "light")
+            : ((el.innerHTML = "🌙"), document.documentElement.dataset.theme = "dark");
+        }
+      </script>
+</body>
+
+</html>
