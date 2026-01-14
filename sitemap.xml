@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    <url>
+        <loc>https://kinnen.de/</loc>
+    </url>
+    <url>
+        <loc>https://kinnen.de/about/</loc>
+    </url>
+    <url>
+        <loc>https://kinnen.de/blog/</loc>
+    </url>
+    <url>
+        <loc>https://kinnen.de/blog/anlassen/</loc>
+        <lastmod>2024-04-29</lastmod>
+    </url>
+    <url>
+        <loc>https://kinnen.de/blog/enumset-benchmark/</loc>
+        <lastmod>2024-01-05</lastmod>
+    </url>
+    <url>
+        <loc>https://kinnen.de/blog/first/</loc>
+        <lastmod>2024-01-03</lastmod>
+    </url>
+    <url>
+        <loc>https://kinnen.de/blog/page/1/</loc>
+    </url>
+    <url>
+        <loc>https://kinnen.de/blog/task-tracking-with-gmail-only/</loc>
+        <lastmod>2026-01-14</lastmod>
+    </url>
+    <url>
+        <loc>https://kinnen.de/blog/tigersport660-review/</loc>
+        <lastmod>2025-11-01</lastmod>
+    </url>
+</urlset>

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+
+<head>
+    <meta charset="utf-8">
+    <title>Home - Thomas' Blog</title>
+    <meta property="og:title" content="" />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https:&#x2F;&#x2F;kinnen.de&#x2F;">
+    
+    <meta property="og:image" content="/favicon-32x32.png" />
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/pico.min.css">
+    <link rel="stylesheet" href="/custom.css">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <link rel="me" href="https://github.com/nihathrael">
+    <link rel="me" href="https://www.reddit.com/user/nihathrael/">
+    <link rel="me" href="https://www.linkedin.com/in/thomas-kinnen/">
+    <script defer src="https://cloud.umami.is/script.js" data-website-id="ca97c930-a532-4dfe-bf87-352bd391e491"></script>
+</head>
+
+<body>
+   
+    <main class="container">
+        <header>
+            <nav>
+                <ul>
+                    <li>
+                        <strong>Thomas' Homepage</a></strong>
+                    </li>
+                </ul>
+                <ul>
+                    <li><a href="/" aria-current="page">Home</a></li>
+                    <li><a href="/blog/" >Blog</a></li>
+                    <li><a href="/about" >About</a></li>
+                    <li><a href="javascript:void(0)" id="theme-switch" onclick="switchMode(this)">☀️</a></li>
+                </ul>
+            </nav>
+        </header>
+        
+<h1>Hi There!</h1>
+<p>I'm <a href="https://kinnen.de/about/">Thomas</a>, welcome to my homepage. I blog about anything that interests me. </p>
+
+<h2>Blog Posts</h2>
+
+<ul>
+    
+    <li><a href="https://kinnen.de/blog/task-tracking-with-gmail-only/">Productivity with only (G)mail &amp; Calendar - No dedicated task tracking apps required</a></li>
+    
+    <li><a href="https://kinnen.de/blog/tigersport660-review/">Triumph Tiger Sport 660 - 2 Year Ownership Review </a></li>
+    
+    <li><a href="https://kinnen.de/blog/anlassen/">Nürburgring Anlassen 2024 - What an Experience!</a></li>
+    
+    <li><a href="https://kinnen.de/blog/enumset-benchmark/">Benchmarking the cost of Javas&#x27; EnumSet - A Second Look</a></li>
+    
+    <li><a href="https://kinnen.de/blog/first/">Welcome to my blog!</a></li>
+    
+</ul>
+<h2  id="socials">Socials</h2>
+<p>Feel free to reach out any time!</p>
+<ul>
+    <li><a href="https://github.com/nihathrael">Github</a></li>
+    <li><a href="https://www.linkedin.com/in/thomas-kinnen-b4bb6b159/">Linked-In</a></li>
+    <li><a href="https://www.xing.com/profile/Thomas_Kinnen">Xing</a></li>
+</ul>
+
+        <footer class="container">
+        <hr>
+        <sup>This site is made with the <a href="https://www.getzola.org">Zola Static Site Generator</a> & <a href="https://picocss.com">Pico CSS Framework</a>.</sup>
+        </footer>
+    </main>
+
+    <script>
+        if (
+          window.matchMedia &&
+          window.matchMedia("(prefers-color-scheme: dark)").matches
+        ) {
+            document.documentElement.dataset.theme = "dark";
+            document.querySelector('#theme-switch').innerHTML = "🌙"
+        }
+    
+        function switchMode(el) {
+          document.documentElement.dataset.theme === "dark"
+            ? ((el.innerHTML = "☀️"), document.documentElement.dataset.theme = "light")
+            : ((el.innerHTML = "🌙"), document.documentElement.dataset.theme = "dark");
+        }
+      </script>
+</body>
+
+</html>

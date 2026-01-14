@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+
+<head>
+    <meta charset="utf-8">
+    <title>Benchmarking the cost of Javas&#x27; EnumSet - A Second Look - Thomas' Blog</title>
+    <meta property="og:title" content="" />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https:&#x2F;&#x2F;kinnen.de&#x2F;blog&#x2F;enumset-benchmark&#x2F;">
+    
+    <meta property="og:image" content="/favicon-32x32.png" />
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/pico.min.css">
+    <link rel="stylesheet" href="/custom.css">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <link rel="me" href="https://github.com/nihathrael">
+    <link rel="me" href="https://www.reddit.com/user/nihathrael/">
+    <link rel="me" href="https://www.linkedin.com/in/thomas-kinnen/">
+    <script defer src="https://cloud.umami.is/script.js" data-website-id="ca97c930-a532-4dfe-bf87-352bd391e491"></script>
+</head>
+
+<body>
+   
+    <main class="container">
+        <header>
+            <nav>
+                <ul>
+                    <li>
+                        <strong>Thomas' Homepage</a></strong>
+                    </li>
+                </ul>
+                <ul>
+                    <li><a href="/" >Home</a></li>
+                    <li><a href="/blog/" aria-current="page">Blog</a></li>
+                    <li><a href="/about" >About</a></li>
+                    <li><a href="javascript:void(0)" id="theme-switch" onclick="switchMode(this)">☀️</a></li>
+                </ul>
+            </nav>
+        </header>
+        
+<article>
+  <header>
+    <hgroup>
+      <h1>Benchmarking the cost of Javas&#x27; EnumSet - A Second Look</h1>
+      <p>2024-01-05 - <a class="h-card secondary" href="https://www.kinnen.de">Thomas Kinnen</a></p>
+    </hgroup>
+  </header>
+  <p>A few months ago, I read Chris Wellons' <a rel="noopener" target="_blank" href="https://nullprogram.com/blog/2021/04/23/">"The cost of Java's EnumSet"</a>. I really enjoyed the read, but as a long time Java developer, I was left with few questions and thoughts:</p>
+<ol>
+<li>"Is Java's <code>EnumSet</code> really that slow? 3 orders of magnitude feels like a way too big margin."</li>
+<li>"Writing benchmarks in Java is inherently tricky, especially for small and fast operations. We should probably use a dedicated tool like <a rel="noopener" target="_blank" href="https://github.com/openjdk/jmh">JMH</a> for that."</li>
+</ol>
+<p>Now I finally had some time on my hands to go and explore these thoughts and try to fill the void with some cold hard data. This post will first explain a few important aspects of profiling java and then discuss the results of our specific benchmark, by answering our research questions:</p>
+<span id="continue-reading"></span><h1 id="benchmark-goals-questions">Benchmark Goals &amp; Questions</h1>
+<p>I want to see if I can reproduce Chris' results and answer a few additional questions at the same time:</p>
+<ol>
+<li>Is a bit field really a factor 1000 faster than an <code>EnumSet</code>?</li>
+<li>How fast are the create/equals/add/remove operations individually?</li>
+<li>How easily can we "enable" inlining and how big is the difference?</li>
+<li>Is using <code>Set.of</code> faster/slower than the other options? To me this would be the most modern way of creating a Set of a few objects, if you don't use <code>EnumSet</code> directly: <code>Set&lt;Flag&gt; setOfA = Set.of(Flag.A, Flag.B, Flag.E);</code>. Using this code, we leave picking the 'correct' implementation entirely up to the API.</li>
+</ol>
+<h1 id="benchmarking-in-java">Benchmarking in Java</h1>
+<p>In order to answer the first question, we'll have to look into using JMH for benchmarking first. Since Java runs on the JVM, a runtime environment that does all sorts of optimizations at runtime, based on previous behavior of the code, it is quite difficult to write a benchmark for small operations, as these will likely be optimized by inlining variables or eliminating entire code regions because they are either dead or can be replaced by a constant value.</p>
+<p>Take the example from Chris' post, that he correctly points out at being completely optimized away:</p>
+<pre data-lang="java" class="language-java "><code class="language-java" data-lang="java">static void benchmarkBitField() {
+    System.gc();
+    long beg = System.nanoTime();
+    int a = A | B | G;
+    for (int i = 0; i &lt; 1_000_000_000; i++) {
+        int b = A | B | G;
+        assert a == b;
+    }
+    long end = System.nanoTime();
+    System.out.println(&quot;bitField\t&quot; + (end - beg)&#x2F;1e9);
+}
+</code></pre>
+<p>After a while, the JVM will figure out that the only side effect this method has, is printing the time passed. How does it do it? The steps are <em>roughly</em> as follows:</p>
+<ol>
+<li>It figures out that <code>a</code> and <code>b</code> are constants, so it does not need to recreate <code>b</code> on every loop</li>
+<li>It figures out that <code>a == b</code> is always <code>true</code></li>
+<li>It figures out that the loop does the same thing without any side effects <em>1_000_000_000</em> times, so it can be removed completely.</li>
+<li>It figures out that <code>end</code> can be inlined.</li>
+</ol>
+<p>To the JVM the method now basically looks like this:</p>
+<pre data-lang="java" class="language-java "><code class="language-java" data-lang="java">static void benchmarkBitField() {
+    System.gc();
+    long beg = System.nanoTime();
+    System.out.println(&quot;bitField\t&quot; + (System.nanoTime() - beg)&#x2F;1e9);
+}
+</code></pre>
+<p>As you can tell from Chris' results, the JVM is pretty smart here, it only takes the JVM two method executions, until the third execution is already fully optimized. Parts of the optimization are probably already being done during the compilation as well.</p>
+<h2 id="avoiding-inlining-using-jmh-s-helpers-blackhole-and-state-objects">Avoiding inlining using JMH's helpers: <code>Blackhole</code> and <code>State</code> objects</h2>
+<p>To really compare the performance differences of the <code>a==b</code> statement, we want to avoid it being optimized away in our benchmark. In order to avoid inlining, frameworks such as JMH provide a number of mechanism, such as a <code>Blackhole</code> instance, as well as <code>State</code> objects. You can read more about JMH, these objects and how to write good benchmarks in the great write-up by <em>Jakob Jenkov</em> here: <a rel="noopener" target="_blank" href="https://jenkov.com/tutorials/java-performance/jmh.html">JMH - Java Microbenchmark Harness</a>.</p>
+<p>Let's take a look at a JMH adaption of Chris' benchmark:</p>
+<pre data-lang="java" class="language-java "><code class="language-java" data-lang="java">@Benchmark
+public void benchmarkBitFieldEquals(BitFieldState state, Blackhole bh) {
+    bh.consume(state.a == state.b);
+}
+
+@State(Scope.Thread)
+public static class BitFieldState {
+    public int a = A | B | E;
+    public int b = C | D | F;
+}
+</code></pre>
+<p>To avoid over-eager inlining by the JVM, we use both a <code>State</code> object, that holds the elements <code>a</code> and <code>b</code> that we want to compare and a <code>Blackhole</code> that consumes the value. To ensure that this actually makes a difference, I added a non-inline-protected version:</p>
+<pre data-lang="java" class="language-java "><code class="language-java" data-lang="java">@Benchmark
+public void benchmarkBitFieldEqualsInline(Blackhole bh) {
+    int a = A | B | E;
+    int b = C | D | F;
+    bh.consume(a == b);
+}
+</code></pre>
+<p>The results are pretty clear. The inlinable version is almost twice as fast (the Blackhole doesn't seem to make a difference according to my test, so adding the <code>BitFieldState</code> into the mix is really necessary):</p>
+<pre><code>EnumSetBenchmark.bitFieldEquals          1582210639.358 ± 33561406.255  ops&#x2F;s
+EnumSetBenchmark.bitFieldEqualsInline    2634237498.969 ± 37811030.834  ops&#x2F;s
+</code></pre>
+<p>With that out of the way, let's dive into the actual benchmark!</p>
+<h1 id="benchmark-results">Benchmark Results</h1>
+<p>Let's take a look at the results. You can find the entire <a rel="noopener" target="_blank" href="https://github.com/nihathrael/enumset_benchmark/blob/main/app/src/jmh/java/de/kinnen/enumset_benchmark/EnumSetBenchmark.java">benchmark implementation</a> on Github, so that you can take a look at the code and rerun the benchmark yourself: <a rel="noopener" target="_blank" href="https://github.com/nihathrael/enumset_benchmark">https://github.com/nihathrael/enumset_benchmark</a>.</p>
+<p><strong>Results</strong>:</p>
+<pre><code>Benchmark                                Mode  Cnt           Score          Error  Units
+EnumSetBenchmark.bitFieldAdd             thrpt    5  1122953845.662 ± 14487321.908  ops&#x2F;s
+EnumSetBenchmark.bitFieldCreation        thrpt    5  1292682130.158 ± 33722811.879  ops&#x2F;s
+EnumSetBenchmark.bitFieldCreationInline  thrpt    5  2640638042.506 ± 37382005.672  ops&#x2F;s
+EnumSetBenchmark.bitFieldEquals          thrpt    5  1582210639.358 ± 33561406.255  ops&#x2F;s
+EnumSetBenchmark.bitFieldEqualsInline    thrpt    5  2634237498.969 ± 37811030.834  ops&#x2F;s
+EnumSetBenchmark.bitFieldRemove          thrpt    5  1279302750.101 ± 22906668.356  ops&#x2F;s
+EnumSetBenchmark.enumSetAdd              thrpt    5   201261050.245 ±  3047021.038  ops&#x2F;s
+EnumSetBenchmark.enumSetCreate           thrpt    5   215090629.176 ±   827035.414  ops&#x2F;s
+EnumSetBenchmark.enumSetCreateInline     thrpt    5   239108143.810 ±  2845003.880  ops&#x2F;s
+EnumSetBenchmark.enumSetEquals           thrpt    5   586193130.841 ±  5057355.446  ops&#x2F;s
+EnumSetBenchmark.enumSetEqualsInline     thrpt    5   500615966.717 ±  3552721.301  ops&#x2F;s
+EnumSetBenchmark.enumSetRemove           thrpt    5   204125597.157 ±  1477564.086  ops&#x2F;s
+EnumSetBenchmark.hashSetCreate           thrpt    5    21140166.919 ±   331772.905  ops&#x2F;s
+EnumSetBenchmark.hashSetEquals           thrpt    5    53184863.238 ±   289455.786  ops&#x2F;s
+EnumSetBenchmark.setOfCreate             thrpt    5    26619186.610 ±   370502.131  ops&#x2F;s
+EnumSetBenchmark.setOfEquals             thrpt    5    54846987.946 ±  1022244.569  ops&#x2F;s
+</code></pre>
+<h1 id="discussion">Discussion</h1>
+<p>Let's dive into the results and answer one question at a time:</p>
+<h5 id="1-is-a-bit-field-really-a-factor-1000-faster-than-an-enumset">1. Is a bit field really a factor 1000 faster than an <code>EnumSet</code>?</h5>
+<p>No, it looks like, without the JVM being able to optimize over eagerly, they are about <em>3-6x</em> as fast. That is still a lot, but at least to me, that sounds much more reasonable and in line with what I would have expected (after all, the <code>RegularEnumSet</code>, used for <code>Enums</code> up to a size of 64, uses a bit field internally, so, as Chris correctly outlined in his post, we only expect overhead for the <code>EnumSet</code> instances and some additional boilerplate such as type checks within the implementation). To me it means that using a bit field to represent a set of enums can be a viable approach if you really need every last millisecond (or save tons of RAM, an aspect that we haven't looked at all yet), but for nearly every normal use case, using <code>EnumSet</code> should be just fine.</p>
+<h5 id="2-how-fast-are-the-create-equals-add-remove-operations-individually">2. How fast are the create/equals/add/remove operations individually?</h5>
+<p>For bit fields, all operations are pretty much the same speed and achieve the same ops/s. Since most of these are very simple bit shift or integer comparisons, that is not super surprising.
+<code>EnumSet</code> is the second fastest option, which is about ~3x slower for equals operations and about 6x slower on create/add and remove, compared to the pure bit field.
+<code>HashSet</code>s are quite a bit slower, they are about a factor 10x slower than <code>EnumSets</code> for all operations. To me this means that using the specialized <code>EnumSet</code> is definitely worth it, as it basically comes at no cost other than having to remember to use it.</p>
+<h5 id="3-how-easily-can-we-enable-inlining-and-how-big-is-the-difference">3. How easily can we "enable" inlining and how big is the difference?</h5>
+<p>Looking at the inline version of the creation and equals methods also vividly demonstrates how much performance JVM optimizations provide, if they can be applied effectively. The inlinable versions of the bit fields are ~2x faster than the non-inlined version. In my example we also only inline one or two operations, not entire loops like in Chris' example, where it was very effective, leading to an even higher speedup.
+For the <code>EnumSet</code>s the inlining does not seem to happen, at least on our contrived example, the ops/s are pretty much the same. This underlines Chris' point, that these are hard for the JVM to optimize, even more so in more complex logic, like in his example.</p>
+<h5 id="4-is-using-set-of-faster-slower-than-the-other-options">4. Is using <code>Set.of</code> faster/slower than the other options?</h5>
+<p>Using <code>Set.of</code> is a tiny bit faster than using a <code>HashSet</code>, but still ~10x slower than <code>EnumSet</code>s. This finding surprised me the most, as I would have expected the API to be smart enough to pick an <code>EnumSet</code> internally, if I explicitly add Enum type objects. So the take away, again, is to try to remember to use <code>EnumSet</code> whenever dealing with sets of enums and to not trust the standard API to be smart enough to figure it out.</p>
+<h1 id="summary">Summary</h1>
+<p>Overall, bit fields are a 3-6x faster than <code>EnumSet</code>s in my benchmark and are about ~60x faster than <code>HashSet</code>s or using <code>Set.of(e1, e2, e3)</code>. As a general rule of thumb, you should and can always use <code>EnumSet</code> when dealing with sets of enums, unless you have a very clear performance problem pointing at the <code>EnumSet</code> directly. Of course, as always in Java, it comes at an overhead of memory use, compared to bare bit fields, but is nicer to read and maintain, as well as providing better compiler support (e.g. in switch statements, where the compiler will warn you if are missing a case).
+Big thanks to Chris for opening the discussion on this topic and I hope I could provide some new insights and numbers for you to make your own decisions on what to use for your problem.</p>
+<p>If you have any questions or remarks, feel free to contact me via one of my <a href="/#socials">socials</a>!</p>
+
+</article>
+
+        <footer class="container">
+        <hr>
+        <sup>This site is made with the <a href="https://www.getzola.org">Zola Static Site Generator</a> & <a href="https://picocss.com">Pico CSS Framework</a>.</sup>
+        </footer>
+    </main>
+
+    <script>
+        if (
+          window.matchMedia &&
+          window.matchMedia("(prefers-color-scheme: dark)").matches
+        ) {
+            document.documentElement.dataset.theme = "dark";
+            document.querySelector('#theme-switch').innerHTML = "🌙"
+        }
+    
+        function switchMode(el) {
+          document.documentElement.dataset.theme === "dark"
+            ? ((el.innerHTML = "☀️"), document.documentElement.dataset.theme = "light")
+            : ((el.innerHTML = "🌙"), document.documentElement.dataset.theme = "dark");
+        }
+      </script>
+</body>
+
+</html>

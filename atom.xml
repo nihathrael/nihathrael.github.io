@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+    <title></title>
+    <link rel="self" type="application/atom+xml" href="https://kinnen.de/atom.xml"/>
+    <link rel="alternate" type="text/html" href="https://kinnen.de/"/>
+    <generator uri="https://www.getzola.org/">Zola</generator>
+    <updated>2026-01-14T00:00:00+00:00</updated>
+    <id>https://kinnen.de/atom.xml</id>
+    <entry xml:lang="en">
+        <title>Productivity with only (G)mail &amp; Calendar - No dedicated task tracking apps required</title>
+        <published>2026-01-14T00:00:00+00:00</published>
+        <updated>2026-01-14T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Thomas Kinnen
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://kinnen.de/blog/task-tracking-with-gmail-only/"/>
+        <id>https://kinnen.de/blog/task-tracking-with-gmail-only/</id>
+        
+        <summary type="html">&lt;p&gt;Today I want to write about the system I use, in order to not lose track of tasks I have to complete (and actually complete them). I am a strong believer in using one less tool so I only use Gmail and Google calendar - no extra task tracking apps or similar.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;em&gt;Remember&lt;&#x2F;em&gt;: What works for me might not work for you. Productivity&#x2F;task tracking are deeply personal and depend strongly on your working style and type of work you do, so your mileage may vary.&lt;&#x2F;p&gt;</summary>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>Triumph Tiger Sport 660 - 2 Year Ownership Review </title>
+        <published>2025-11-01T00:00:00+00:00</published>
+        <updated>2025-11-01T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Thomas Kinnen
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://kinnen.de/blog/tigersport660-review/"/>
+        <id>https://kinnen.de/blog/tigersport660-review/</id>
+        
+        <summary type="html">&lt;p&gt;After 2 years of ownership and roughly 7000km, it is time for a review of my motorcycle: the &lt;em&gt;Triumph Tiger Sport 660&lt;&#x2F;em&gt;.&lt;&#x2F;p&gt;</summary>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>Nürburgring Anlassen 2024 - What an Experience!</title>
+        <published>2024-04-29T00:00:00+00:00</published>
+        <updated>2024-04-29T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            Thomas Kinnen
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://kinnen.de/blog/anlassen/"/>
+        <id>https://kinnen.de/blog/anlassen/</id>
+        
+        <summary type="html">&lt;p&gt;Yesterday, I went on my biggest motorcycle day trip thus far: From Ratingen to the Nürburgring and back. Visiting the Nürburgring has been my #1 bike-related goal since I got my first motorcycle last year, so the &lt;a href=&quot;https:&#x2F;&#x2F;www.nuerburgring.de&#x2F;events&#x2F;categories&#x2F;motorcycle&#x2F;anlassen&quot; target=&quot;_blank&quot;&gt;Anlassen&#x2F;Rev-Up&lt;&#x2F;a&gt; event seemed like the perfect opportunity.&lt;&#x2F;p&gt;</summary>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>Benchmarking the cost of Javas&#x27; EnumSet - A Second Look</title>
+        <published>2024-01-05T00:00:00+00:00</published>
+        <updated>2024-01-05T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            Thomas Kinnen
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://kinnen.de/blog/enumset-benchmark/"/>
+        <id>https://kinnen.de/blog/enumset-benchmark/</id>
+        
+        <summary type="html">&lt;p&gt;A few months ago, I read Chris Wellons&#x27; &lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;nullprogram.com&#x2F;blog&#x2F;2021&#x2F;04&#x2F;23&#x2F;&quot;&gt;&quot;The cost of Java&#x27;s EnumSet&quot;&lt;&#x2F;a&gt;. I really enjoyed the read, but as a long time Java developer, I was left with few questions and thoughts:&lt;&#x2F;p&gt;
+&lt;ol&gt;
+&lt;li&gt;&quot;Is Java&#x27;s &lt;code&gt;EnumSet&lt;&#x2F;code&gt; really that slow? 3 orders of magnitude feels like a way too big margin.&quot;&lt;&#x2F;li&gt;
+&lt;li&gt;&quot;Writing benchmarks in Java is inherently tricky, especially for small and fast operations. We should probably use a dedicated tool like &lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;github.com&#x2F;openjdk&#x2F;jmh&quot;&gt;JMH&lt;&#x2F;a&gt; for that.&quot;&lt;&#x2F;li&gt;
+&lt;&#x2F;ol&gt;
+&lt;p&gt;Now I finally had some time on my hands to go and explore these thoughts and try to fill the void with some cold hard data. This post will first explain a few important aspects of profiling java and then discuss the results of our specific benchmark, by answering our research questions:&lt;&#x2F;p&gt;</summary>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>Welcome to my blog!</title>
+        <published>2024-01-03T00:00:00+00:00</published>
+        <updated>2024-01-03T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            Thomas Kinnen
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://kinnen.de/blog/first/"/>
+        <id>https://kinnen.de/blog/first/</id>
+        
+        <summary type="html">&lt;p&gt;Welcome to my blog! On this blog I&#x27;ll be covering a variety of topics that interest me, mostly technical computer science related topics.&lt;&#x2F;p&gt;</summary>
+        
+    </entry>
+</feed>
