@@ -1,10 +1,10 @@
 +++
-title = "Tracking tasks with only (G)mail & Calendar - No dedicated task tracking apps required"
+title = "Productivity with only (G)mail & Calendar - No dedicated task tracking apps required"
 date = 2026-01-14
 author = ["Thomas Kinnen"]
 draft = false
 +++
-Today I want to write about the system I use, in order to not lose track of tasks I have to complete. I am a strong believer in using one less tool so I only use Gmail and Google calendar - no extra task tracking apps or similar.
+Today I want to write about the system I use, in order to not lose track of tasks I have to complete (and actually complete them). I am a strong believer in using one less tool so I only use Gmail and Google calendar - no extra task tracking apps or similar.
 
 *Remember*: What works for me might not work for you. Productivity/task tracking are deeply personal and depend strongly on your working style and type of work you do, so your mileage may vary.
 
@@ -14,7 +14,7 @@ Today I want to write about the system I use, in order to not lose track of task
 
 I recently watched a video covering [Jeff Su's](https://www.jeffsu.org/i-taught-6-642-googlers-this-productivity-system/) teaching CORE to over 6600 Google employees (using GMail, Calendar and Google Tasks). The basic principles are the same as what I have been using for years, without ever knowing about CORE. Since the *CORE* acronym is much nicer than anything I can come up with, I'll just use it as a reference from now on.
 
-The bottom line for productivity and task tracking is that you need a system that works, no matter what. Having a bad day? The system's got you and you're not loosing that task your boss just gave you, just because your baby woke you up 4 times last night and you cannot remember anything for more than 30 seconds (ask me how I know).
+The bottom line for productivity is that you need a system that works, no matter what. Having a bad day? The system's got you and you're not loosing that task your boss just gave you, just because your baby woke you up 4 times last night and you cannot remember anything for more than 30 seconds (ask me how I know).
 
 *CORE* stands for 4 steps that make up the system:
 
@@ -47,7 +47,7 @@ In the beginning it will feel super awkward to send mails to yourself, but trust
 
 #### What if my email client doesn't support snoozing?
 
-My private email provider (Mailbox.org) doesn't support snoozing either, unfortunately. For private stuff I'm fine with just skipping the snoozing and leaving everything in my inbox, as I rarely have more than a few items there at a time. For work, I honestly don't know. Probably start using an actual todo list app 🥲.
+My private email provider ([Mailbox.org](https://www.mailbox.org)) doesn't support snoozing either, unfortunately. For private stuff I'm fine with just skipping the snoozing and leaving everything in my inbox, as I rarely have more than a few items there at a time. For work, I honestly don't know. Probably start using an actual todo list app 🥲.
 
 ### Step 3: Review - create calendar entries
 
@@ -65,7 +65,7 @@ Nothing to see here, just do what your calendar says needs to be done. If you sc
 One of my main source of tasks are emails I receive. So in my experience it makes sense to just treat them as such. I'm not totally sure where the idea came from (it's also not super novel) but I know two sources that inspired my daily process heavily:
 
 1. [Google's Inbox By Gmail](https://en.wikipedia.org/wiki/Inbox_by_Gmail) - An alternative Gmail client launched in 2014 (and killed in 2019) that was centered around the core idea of treating emails as tasks - checkbox and everything. It was (and would still be) the best email client ever created, but for some reason Google decided to discontinue it regardless. And yes, I am still salty about it.
-1. My boss [Benjamin Hummel](https://www.linkedin.com/in/benjamin-hummel-cqse/), who I regularly found sending emails to himself, as a reminder of things he still needed to do. So I definitely "borrowed" that I idea from him.
+1. My boss [Benjamin Hummel](https://www.linkedin.com/in/benjamin-hummel-cqse/) - I regularly watched him sending emails to himself, as a reminder of things he still needed to do. I tried this myself after a while and have stuck with it ever since. So I definitely "borrowed" that I idea from him.
 
 ## FAQ
 
